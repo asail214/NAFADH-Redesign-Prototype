@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نفاذ · استكشف الفرص</title>
+  <meta name="description" content="مستكشف الوظائف والعمل الحر والمناقصات — نموذج تصميم تفاعلي">
+  <script>try{var t=localStorage.getItem('nf-proto-theme')}catch(e){}document.documentElement.setAttribute('data-theme',t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/logos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/opportunities.css">
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container bar">
+      <div class="brand">
+        <a href="index.html" aria-label="نفاذ — الرئيسية"><span class="logo-nafadh"></span></a>
+        <span class="divider"></span>
+        <img class="logo-tra" src="assets/img/tra-logo.png" alt="هيئة تنظيم الاتصالات">
+      </div>
+      <nav class="nav" aria-label="التنقل الرئيسي">
+        <a href="index.html">الرئيسية</a>
+        <a href="index.html#services">الخدمات</a>
+        <a href="opportunities.html" class="active">استكشف الفرص</a>
+        <a href="dashboard.html">لوحة التحكم</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-ghost btn-icon" data-theme-toggle aria-label="تبديل المظهر"></button>
+        <a href="dashboard.html" class="btn btn-sm hide-sm user-pill"><span class="av">م</span> حسابي</a>
+        <button class="btn btn-ghost btn-icon menu-toggle" aria-label="القائمة" aria-expanded="false"><i data-i="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page hero + search -->
+    <section class="ex-hero">
+      <div class="grid-bg"></div>
+      <div class="glow" style="width:460px;height:460px;background:var(--glow-a);top:-220px;left:10%;opacity:.28"></div>
+      <div class="glow" style="width:320px;height:320px;background:var(--glow-b);top:-100px;right:5%;opacity:.2"></div>
+      <div class="container">
+        <span class="eyebrow" data-reveal="down"><span class="dot"></span> <span id="totalLabel">٠ فرصة متاحة الآن</span></span>
+        <h1 class="h-section" data-reveal="up" style="--d:.06s">استكشف <span class="em">الفرص</span> التي تناسبك</h1>
+        <p class="lead" data-reveal="up" style="--d:.12s">وظائف، مشاريع مستقلة، ومناقصات — كلها في مكان واحد مع فلاتر ذكية.</p>
+
+        <div class="search" data-reveal="up" style="--d:.18s">
+          <i data-i="search"></i>
+          <label class="sr-only" for="q">بحث</label>
+          <input id="q" type="search" placeholder="ابحث بالمسمى، الجهة، أو المهارة…" autocomplete="off">
+          <kbd>/</kbd>
+        </div>
+        <div class="suggest" data-reveal="up" style="--d:.24s">
+          <span>شائع:</span>
+          <button data-q="شبكات">شبكات</button>
+          <button data-q="أمن">أمن سيبراني</button>
+          <button data-q="تصميم">تصميم</button>
+          <button data-q="Angular">Angular</button>
+          <button data-q="ألياف">ألياف ضوئية</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Type tabs -->
+    <div class="container">
+      <div class="tabs" role="tablist" aria-label="نوع الفرصة">
+        <span class="tab-ind" aria-hidden="true"></span>
+        <button role="tab" data-type="all" aria-selected="true"><i data-i="layers"></i> الكل <b data-count-type="all">٠</b></button>
+        <button role="tab" data-type="job" aria-selected="false"><i data-i="briefcase"></i> وظائف <b data-count-type="job">٠</b></button>
+        <button role="tab" data-type="free" aria-selected="false"><i data-i="laptop"></i> عمل حر <b data-count-type="free">٠</b></button>
+        <button role="tab" data-type="tender" aria-selected="false"><i data-i="file"></i> مناقصات <b data-count-type="tender">٠</b></button>
+      </div>
+    </div>
+
+    <section class="container explorer">
+      <!-- Filters -->
+      <aside class="filters" id="filters" aria-label="الفلاتر">
+        <div class="filters-head">
+          <h2><i data-i="sliders"></i> الفلاتر</h2>
+          <button class="link-btn" id="resetFilters">مسح الكل</button>
+          <button class="btn btn-ghost btn-icon close-filters" aria-label="إغلاق"><i data-i="x"></i></button>
+        </div>
+
+        <div class="f-group">
+          <label class="f-label" for="gov">المحافظة</label>
+          <div class="select">
+            <select id="gov"><option value="">جميع المحافظات</option></select>
+            <i data-i="chevron"></i>
+          </div>
+        </div>
+
+        <fieldset class="f-group">
+          <legend class="f-label">نمط العمل</legend>
+          <div class="checks" id="modes"></div>
+        </fieldset>
+
+        <fieldset class="f-group">
+          <legend class="f-label">المستوى</legend>
+          <div class="pills" id="levels"></div>
+        </fieldset>
+
+        <fieldset class="f-group">
+          <legend class="f-label">ينتهي التقديم خلال</legend>
+          <div class="pills" id="deadline">
+            <button data-v="0" class="on">الكل</button>
+            <button data-v="7">٧ أيام</button>
+            <button data-v="14">١٤ يوماً</button>
+            <button data-v="30">٣٠ يوماً</button>
+          </div>
+        </fieldset>
+
+        <div class="f-group">
+          <label class="switch"><input type="checkbox" id="featuredOnly"><span class="track"><span></span></span> الفرص المميزة فقط</label>
+          <label class="switch"><input type="checkbox" id="savedOnly"><span class="track"><span></span></span> المحفوظة فقط</label>
+        </div>
+
+        <div class="f-promo">
+          <i data-i="bell"></i>
+          <strong>فعّل تنبيهات الفرص</strong>
+          <p>نُبلغك فور نشر فرصة تطابق فلاترك الحالية.</p>
+          <button class="btn btn-primary btn-sm" id="saveAlert">حفظ التنبيه</button>
+        </div>
+      </aside>
+
+      <!-- Results -->
+      <div class="results">
+        <div class="toolbar">
+          <button class="btn btn-sm open-filters"><i data-i="filter"></i> الفلاتر <b class="fcount" hidden></b></button>
+          <p class="r-count" aria-live="polite"><strong id="resultCount">٠</strong> نتيجة</p>
+          <div class="active-chips" id="activeChips"></div>
+          <div class="tool-end">
+            <div class="select select-sm">
+              <label class="sr-only" for="sort">الترتيب</label>
+              <select id="sort">
+                <option value="new">الأحدث</option>
+                <option value="deadline">الأقرب انتهاءً</option>
+                <option value="pay">الأعلى مقابلاً</option>
+                <option value="popular">الأكثر تقديماً</option>
+              </select>
+              <i data-i="chevron"></i>
+            </div>
+            <div class="view-toggle" role="group" aria-label="طريقة العرض">
+              <button data-view="grid" class="on" aria-label="شبكة"><i data-i="grid"></i></button>
+              <button data-view="list" aria-label="قائمة"><i data-i="list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" id="cards"></div>
+
+        <div class="empty" id="empty" hidden>
+          <div class="empty-art"><i data-i="search"></i></div>
+          <h3>لا توجد نتائج مطابقة</h3>
+          <p>جرّب تعديل الفلاتر أو البحث بكلمات مختلفة.</p>
+          <button class="btn btn-primary btn-sm" id="emptyReset">إعادة ضبط الفلاتر</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detail drawer -->
+  <div class="drawer-backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="drawer-inner" id="drawerBody"></div>
+  </aside>
+  <div class="filters-backdrop"></div>
+
+  <footer class="site-footer compact">
+    <div class="footer-net" data-mesh="on-dark" data-seed="8"></div>
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+        <span class="logo-nafadh" style="height:34px"></span>
+        <span>© <span data-year></span> هيئة تنظيم الاتصالات · نموذج تصميم تجريبي — بيانات وهمية</span>
+        <img class="logo-tra" src="assets/img/tra-logo.png" alt="هيئة تنظيم الاتصالات">
+      </div>
+    </div>
+  <div class="contact-wrap">
+    <div class="contact-bar" aria-label="معلومات التواصل مع الهيئة">
+      <span><i data-i="headset"></i> 1000</span>
+      <a href="https://www.tra.gov.om" target="_blank" rel="noopener"><i data-i="globe"></i> www.tra.gov.om</a>
+      <a href="mailto:consumer@tra.gov.om"><i data-i="mail"></i> consumer@tra.gov.om</a>
+      <span><i data-i="youtube"></i><i data-i="x_social"></i> @TRA_OMAN</span>
+    </div>
+  </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/opportunities.js"></script>
+</body>
+</html>

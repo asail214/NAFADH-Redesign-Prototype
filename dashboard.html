@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نفاذ · لوحة التحكم</title>
+  <meta name="description" content="لوحة تحكم المستخدم — نموذج تصميم تفاعلي لمنصة نفاذ">
+  <script>try{var t=localStorage.getItem('nf-proto-theme')}catch(e){}document.documentElement.setAttribute('data-theme',t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/logos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="app">
+  <!-- Sidebar -->
+  <aside class="side" id="side" aria-label="القائمة الجانبية">
+    <a href="index.html" class="side-brand" aria-label="نفاذ — الرئيسية"><span class="logo-nafadh"></span></a>
+    <nav class="side-nav">
+      <span class="side-label">الرئيسية</span>
+      <a href="#overview" class="active"><i data-i="home"></i> نظرة عامة</a>
+      <a href="#applications"><i data-i="send"></i> طلباتي <b>٧</b></a>
+      <a href="#recommended"><i data-i="sparkles"></i> فرص مقترحة</a>
+      <a href="#activity"><i data-i="chart"></i> النشاط</a>
+      <span class="side-label">استكشاف</span>
+      <a href="opportunities.html?type=job"><i data-i="briefcase"></i> الوظائف</a>
+      <a href="opportunities.html?type=free"><i data-i="laptop"></i> العمل الحر</a>
+      <a href="opportunities.html?type=tender"><i data-i="file"></i> المناقصات</a>
+      <span class="side-label">الحساب</span>
+      <a href="#profile"><i data-i="user"></i> الملف الشخصي</a>
+      <a href="#" data-mock-link="الرسائل"><i data-i="message"></i> الرسائل <b class="accent">٣</b></a>
+      <a href="#" data-mock-link="الإعدادات"><i data-i="sliders"></i> الإعدادات</a>
+    </nav>
+    <div class="side-card">
+      <span class="logo-mark"></span>
+      <strong>نفاذ للأعمال</strong>
+      <p>هل تمثّل جهة؟ انشر فرصك ومناقصاتك بسهولة.</p>
+      <a href="opportunities.html" class="btn btn-sm">اعرف المزيد</a>
+    </div>
+    <div class="side-foot">
+      <img class="logo-tra" src="assets/img/tra-logo.png" alt="هيئة تنظيم الاتصالات">
+      <a href="index.html" class="side-out"><i data-i="logout"></i> العودة للموقع</a>
+    </div>
+  </aside>
+  <div class="side-backdrop"></div>
+
+  <div class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon side-toggle" aria-label="القائمة"><i data-i="menu"></i></button>
+      <div class="greet">
+        <small id="greetTime">مساء الخير</small>
+        <h1>أهلاً، <span id="userFirst">مريم</span> 👋</h1>
+      </div>
+      <div class="top-search">
+        <i data-i="search"></i>
+        <label class="sr-only" for="dq">بحث</label>
+        <input id="dq" type="search" placeholder="ابحث في طلباتك والفرص…">
+      </div>
+      <div class="top-actions">
+        <button class="btn btn-ghost btn-icon" data-theme-toggle aria-label="تبديل المظهر"></button>
+        <div class="notif">
+          <button class="btn btn-ghost btn-icon" id="bell" aria-label="الإشعارات" aria-expanded="false"><i data-i="bell"></i><span class="ping"></span></button>
+          <div class="notif-pop" id="notifPop" hidden>
+            <div class="np-head"><strong>الإشعارات</strong><button class="link-btn" id="markRead">تعليم الكل كمقروء</button></div>
+            <ul id="notifList"></ul>
+          </div>
+        </div>
+        <a href="#profile" class="me"><span class="av" id="avTop">م</span><span class="me-txt"><strong id="nameTop"></strong><small id="roleTop"></small></span></a>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- Overview: profile + KPIs -->
+      <section id="overview" class="grid-top">
+        <article class="profile-card" id="profile" data-reveal="up">
+          <div class="pc-bg" aria-hidden="true"></div>
+          <div class="pc-head">
+            <div class="ring" id="ring" role="img" aria-label="اكتمال الملف ٨٢٪">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="r-track"/><circle cx="60" cy="60" r="52" class="r-val" id="ringVal"/></svg>
+              <span class="r-av" id="avBig">م</span>
+            </div>
+            <div>
+              <span class="verified"><i data-i="shield"></i> هوية موثّقة</span>
+              <h2 id="nameBig"></h2>
+              <p id="roleBig"></p>
+            </div>
+          </div>
+          <div class="pc-progress">
+            <div class="pc-row"><span>اكتمال الملف الشخصي</span><strong><span data-count="82">٠</span>٪</strong></div>
+            <ul class="todo">
+              <li class="done"><i data-i="check"></i> المعلومات الأساسية</li>
+              <li class="done"><i data-i="check"></i> المؤهلات والخبرات</li>
+              <li><i data-i="upload"></i> رفع شهادة مهنية واحدة على الأقل</li>
+              <li><i data-i="edit"></i> إضافة نبذة تعريفية</li>
+            </ul>
+          </div>
+          <div class="skills" id="skills"></div>
+          <div class="pc-actions">
+            <button class="btn btn-light btn-sm" data-toast="سيتم فتح محرر الملف الشخصي (تجريبي)"><i data-i="edit"></i> تعديل الملف</button>
+            <button class="btn btn-outline-light btn-sm" data-toast="تم تنزيل السيرة الذاتية (تجريبي)"><i data-i="file"></i> السيرة الذاتية</button>
+          </div>
+        </article>
+
+        <div class="kpis">
+          <article class="xcard kpi" data-reveal="up" style="--d:.05s;--k:var(--c-job)">
+            <div class="kpi-top"><span class="k-ico"><i data-i="send"></i></span><span class="delta up"><i data-i="trend"></i> ١٨٪</span></div>
+            <strong data-count="7">٠</strong><span>طلبات نشطة</span>
+            <svg class="spark" viewBox="0 0 120 36" preserveAspectRatio="none" data-spark="2,3,1,4,3,5,2,6,4,5,7,6" aria-hidden="true"></svg>
+          </article>
+          <article class="xcard kpi" data-reveal="up" style="--d:.1s;--k:var(--c-free)">
+            <div class="kpi-top"><span class="k-ico"><i data-i="calendar"></i></span><span class="delta up"><i data-i="trend"></i> ١ جديدة</span></div>
+            <strong data-count="2">٠</strong><span>مقابلات قادمة</span>
+            <svg class="spark" viewBox="0 0 120 36" preserveAspectRatio="none" data-spark="0,0,1,0,1,0,0,1,1,0,1,2" aria-hidden="true"></svg>
+          </article>
+          <article class="xcard kpi" data-reveal="up" style="--d:.15s;--k:var(--c-tender)">
+            <div class="kpi-top"><span class="k-ico"><i data-i="eye"></i></span><span class="delta up"><i data-i="trend"></i> ٣٢٪</span></div>
+            <strong data-count="128">٠</strong><span>مشاهدات الملف</span>
+            <svg class="spark" viewBox="0 0 120 36" preserveAspectRatio="none" data-spark="40,52,48,61,58,72,70,84,90,96,112,128" aria-hidden="true"></svg>
+          </article>
+          <article class="xcard kpi" data-reveal="up" style="--d:.2s;--k:var(--brand)">
+            <div class="kpi-top"><span class="k-ico"><i data-i="bookmark"></i></span><span class="delta flat">— ثابت</span></div>
+            <strong data-count="12" id="savedKpi">٠</strong><span>فرص محفوظة</span>
+            <svg class="spark" viewBox="0 0 120 36" preserveAspectRatio="none" data-spark="8,9,9,10,11,10,12,12,11,12,12,12" aria-hidden="true"></svg>
+          </article>
+        </div>
+      </section>
+
+      <!-- Activity overview -->
+      <section id="activity" class="grid-mid">
+        <article class="panel chart-panel" data-reveal="up">
+          <div class="panel-head">
+            <div><h2>نشاط التقديم</h2><p>عدد الطلبات المقدّمة أسبوعياً</p></div>
+            <div class="seg" role="group" aria-label="الفترة">
+              <button data-range="6">٦ أسابيع</button>
+              <button data-range="12" class="on">١٢ أسبوعاً</button>
+            </div>
+          </div>
+          <div class="chart" id="barChart" role="img" aria-label="مخطط أعمدة لعدد الطلبات الأسبوعية"></div>
+          <details class="table-view">
+            <summary>عرض البيانات كجدول</summary>
+            <table id="barTable"></table>
+          </details>
+        </article>
+
+        <article class="panel" data-reveal="up" style="--d:.08s">
+          <div class="panel-head"><div><h2>الطلبات حسب النوع</h2><p>إجمالي آخر ١٢ أسبوعاً</p></div></div>
+          <div class="big-num"><strong data-count="26">٠</strong><span>طلباً</span></div>
+          <div class="stack" id="stack" role="img" aria-label="توزيع الطلبات حسب النوع"></div>
+          <ul class="legend" id="legend"></ul>
+          <div class="tip-card"><i data-i="sparkles"></i><p>طلباتك على <b>المناقصات</b> قليلة — هناك ٣ مناقصات جديدة تطابق خبراتك.</p></div>
+        </article>
+      </section>
+
+      <!-- Applications -->
+      <section id="applications" class="panel" data-reveal="up">
+        <div class="panel-head">
+          <div><h2>طلباتي</h2><p>تابع حالة كل طلب ومرحلته الحالية</p></div>
+          <div class="seg" role="tablist" aria-label="تصفية الطلبات" id="appFilter">
+            <button data-f="all" class="on">الكل</button>
+            <button data-f="active">نشطة</button>
+            <button data-f="interview">مقابلات</button>
+            <button data-f="closed">مغلقة</button>
+          </div>
+        </div>
+        <div class="app-list" id="appList"></div>
+      </section>
+
+      <!-- Recommended + timeline -->
+      <section class="grid-bot">
+        <article class="panel" id="recommended" data-reveal="up">
+          <div class="panel-head">
+            <div><h2>فرص مقترحة لك</h2><p>بناءً على مهاراتك وموقعك</p></div>
+            <a href="opportunities.html" class="btn btn-sm">عرض الكل <i data-i="arrow" class="arrow"></i></a>
+          </div>
+          <div class="rec-list" id="recList"></div>
+        </article>
+
+        <article class="panel" data-reveal="up" style="--d:.08s">
+          <div class="panel-head"><div><h2>آخر النشاطات</h2><p>ما حدث مؤخراً في حسابك</p></div></div>
+          <ol class="timeline" id="timeline"></ol>
+          <div class="upcoming">
+            <h3><i data-i="calendar"></i> القادم</h3>
+            <div class="event">
+              <div class="date"><b>١٨</b><small>أكتوبر</small></div>
+              <div><strong>مقابلة: مطور واجهات أمامية</strong><small>دار البيانات الوطنية · ١٠:٣٠ ص · عن بُعد</small></div>
+            </div>
+            <div class="event">
+              <div class="date"><b>٢٢</b><small>أكتوبر</small></div>
+              <div><strong>تسليم المرحلة الأولى</strong><small>تصميم هوية بصرية لمنصة رقمية</small></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <p class="foot-note">© <span data-year></span> هيئة تنظيم الاتصالات · نموذج تصميم تجريبي — جميع البيانات وهمية</p>
+    </div>
+  </div>
+
+  <div class="chart-tip" id="chartTip" role="status" hidden></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
